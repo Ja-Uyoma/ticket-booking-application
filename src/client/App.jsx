@@ -37,7 +37,7 @@ function Header() {
       </div>
       <div>
         <a href="/" className="hover:cursor-pointer">
-          Log In
+          Sign In/Register
         </a>
       </div>
     </div>
