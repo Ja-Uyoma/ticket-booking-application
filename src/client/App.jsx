@@ -4,6 +4,7 @@ function App() {
   return (
     <>
       <Header />
+      <SearchBar />
       <Footer />
     </>
   );
@@ -39,6 +40,26 @@ function Header() {
         <a href="/" className="hover:cursor-pointer">
           Sign In/Register
         </a>
+      </div>
+    </div>
+  );
+}
+
+function SearchBar() {
+  return (
+    <div className="bg-blue-600">
+      <div className="flex justify-center gap-2">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search..."
+          required
+          className="w-1/3 rounded p-2 placeholder:p-4"
+        />
+        <button type="submit" className="bg-blue-600 text-white">
+          Search
+        </button>
       </div>
     </div>
   );
