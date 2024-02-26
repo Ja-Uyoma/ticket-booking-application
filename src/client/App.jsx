@@ -16,28 +16,30 @@ function Header() {
       <header>
         <h1 className="font-bold text-2xl italic">TicketPal</h1>
       </header>
-      <div>
-        <a href="/" className="hover:cursor-pointer">
-          Concerts
-        </a>
+      <div className="flex justify-between gap-2">
+        <div>
+          <a href="/" className="hover:cursor-pointer hover:bg-blue-900">
+            Concerts
+          </a>
+        </div>
+        <div>
+          <a href="/" className="hover:cursor-pointer hover:bg-blue-900">
+            Sports
+          </a>
+        </div>
+        <div>
+          <a href="/" className="hover:cursor-pointer hover:bg-blue-900">
+            Arts & Theater
+          </a>
+        </div>
+        <div>
+          <a href="/" className="hover:cursor-pointer hover:bg-blue-900">
+            Family
+          </a>
+        </div>
       </div>
       <div>
-        <a href="/" className="hover:cursor-pointer">
-          Sports
-        </a>
-      </div>
-      <div>
-        <a href="/" className="hover:cursor-pointer">
-          Arts & Theater
-        </a>
-      </div>
-      <div>
-        <a href="/" className="hover:cursor-pointer">
-          Family
-        </a>
-      </div>
-      <div>
-        <a href="/" className="hover:cursor-pointer">
+        <a href="/" className="hover:cursor-pointer hover:bg-blue-900">
           Sign In/Register
         </a>
       </div>
