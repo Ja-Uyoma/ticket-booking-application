@@ -17,6 +17,26 @@ function Header() {
       </header>
       <div>
         <a href="/" className="hover:cursor-pointer">
+          Concerts
+        </a>
+      </div>
+      <div>
+        <a href="/" className="hover:cursor-pointer">
+          Sports
+        </a>
+      </div>
+      <div>
+        <a href="/" className="hover:cursor-pointer">
+          Arts & Theater
+        </a>
+      </div>
+      <div>
+        <a href="/" className="hover:cursor-pointer">
+          Family
+        </a>
+      </div>
+      <div>
+        <a href="/" className="hover:cursor-pointer">
           Log In
         </a>
       </div>
