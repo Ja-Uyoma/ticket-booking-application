@@ -67,7 +67,7 @@ function Footer() {
   return (
     <footer className="bg-gray-800">
       <p className="text-white text-center">
-        Copyright &copy; TicketPal <span>2024</span>{" "}
+        Copyright &copy; <span>2024</span> TicketPal. All rights reserved{" "}
       </p>
     </footer>
   );
