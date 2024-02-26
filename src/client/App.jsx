@@ -47,7 +47,7 @@ function Header() {
 
 function SearchBar() {
   return (
-    <div className="flex justify-center bg-blue-600 outline-offset-4 outline-4 ring-white py-4">
+    <div className="flex justify-center bg-blue-600 py-4">
       <input
         type="search"
         name="search"
