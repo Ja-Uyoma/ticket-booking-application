@@ -11,9 +11,9 @@ function App() {
 
 function Header() {
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around text-lg">
       <header>
-        <h1 className="font-bold text-xl italic">TicketPal</h1>
+        <h1 className="font-bold text-2xl italic">TicketPal</h1>
       </header>
       <div>
         <a href="/" className="hover:cursor-pointer">
