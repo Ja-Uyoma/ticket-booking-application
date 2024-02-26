@@ -13,7 +13,7 @@ function Header() {
   return (
     <div className="flex justify-around">
       <header>
-        <h1 className="font-bold text-xl">TicketPal</h1>
+        <h1 className="font-bold text-xl italic">TicketPal</h1>
       </header>
       <div>
         <a href="/" className="hover:cursor-pointer">
