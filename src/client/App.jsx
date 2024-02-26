@@ -12,7 +12,7 @@ function App() {
 
 function Header() {
   return (
-    <div className="flex justify-around text-lg bg-blue-600 text-white">
+    <div className="flex justify-around text-lg bg-blue-600 text-white p-4">
       <header>
         <h1 className="font-bold text-2xl italic">TicketPal</h1>
       </header>
@@ -47,7 +47,7 @@ function Header() {
 
 function SearchBar() {
   return (
-    <div className="flex justify-center bg-blue-600 outline-offset-4 outline-4 ring-white p-2">
+    <div className="flex justify-center bg-blue-600 outline-offset-4 outline-4 ring-white py-4">
       <input
         type="search"
         name="search"
