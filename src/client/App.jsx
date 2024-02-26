@@ -1,7 +1,12 @@
 import React from "react";
 
 function App() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 }
 
 function Header() {
@@ -16,6 +21,16 @@ function Header() {
         </a>
       </div>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-gray-800">
+      <p className="text-white text-center">
+        Copyright &copy; TicketPal <span>2024</span>{" "}
+      </p>
+    </footer>
   );
 }
 
