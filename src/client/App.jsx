@@ -11,7 +11,7 @@ function App() {
 
 function Header() {
   return (
-    <div className="flex justify-around text-lg bg-blue-600">
+    <div className="flex justify-around text-lg bg-blue-600 text-white">
       <header>
         <h1 className="font-bold text-2xl italic">TicketPal</h1>
       </header>
