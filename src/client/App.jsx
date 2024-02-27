@@ -67,7 +67,7 @@ function SearchBar() {
 
 function Footer() {
   return (
-    <footer className="bg-gray-800">
+    <footer className="bg-gray-800 py-6">
       <p className="text-white text-center">
         Copyright &copy; <span>2024</span> TicketPal. All rights reserved{" "}
       </p>
