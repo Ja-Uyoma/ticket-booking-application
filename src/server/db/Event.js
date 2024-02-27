@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "./db.js";
+import { sequelize } from "./connection.js";
 
 const Event = sequelize.define("Event", {
   event_id: {
