@@ -15,6 +15,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+ViteExpress.listen(app, 3000, () => console.log("Server is listening on port 3000..."));
+
 app.post("/api/v1/register", async (req, res, next) => {
   try {
     const user = await User.create({ user_email: req.body.email, user_password: req.body.password });
@@ -23,5 +25,3 @@ app.post("/api/v1/register", async (req, res, next) => {
     return next(err);
   }
 });
-
-ViteExpress.listen(app, 3000, () => console.log("Server is listening on port 3000..."));
