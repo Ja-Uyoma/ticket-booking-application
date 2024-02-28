@@ -39,7 +39,7 @@ function Header() {
         </div>
       </div>
       <div>
-        <a href="/" className="hover:cursor-pointer hover:bg-blue-900">
+        <a href={`/login`} className="hover:cursor-pointer hover:bg-blue-900">
           Sign In/Register
         </a>
       </div>
