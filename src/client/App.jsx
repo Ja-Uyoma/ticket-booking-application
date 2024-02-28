@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -39,9 +40,9 @@ function Header() {
         </div>
       </div>
       <div>
-        <a href={`/login`} className="hover:cursor-pointer hover:bg-blue-900">
+        <Link to={`/login`} className="hover:cursor-pointer hover:bg-blue-900">
           Sign In/Register
-        </a>
+        </Link>
       </div>
     </div>
   );
