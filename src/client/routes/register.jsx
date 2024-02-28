@@ -1,5 +1,24 @@
 import React from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
+
+export async function registerAction({ request }) {
+  const data = Object.fromEntries(await request.formData());
+
+  const res = await fetch("/api/v1/register", {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw res;
+      }
+    })
+    .catch((err) => console.error(err));
+
+  return redirect("/login");
+}
 
 export default function Register() {
   return (
@@ -9,7 +28,7 @@ export default function Register() {
       </div>
 
       <div className="">
-        <Form className="" action="#" method="POST">
+        <Form className="" action="/register" method="POST">
           <div>
             <label htmlFor="email" className="">
               Email address
