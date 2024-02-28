@@ -1,11 +1,11 @@
 import React from "react";
-import { Form, Link } from "react-router-dom";
+import { Form } from "react-router-dom";
 
 export default function Login() {
   return (
     <div className="">
       <div className="">
-        <h2 className="">Sign in to your account</h2>
+        <h2 className="">Create an account</h2>
       </div>
 
       <div className="">
@@ -24,11 +24,6 @@ export default function Login() {
               <label htmlFor="password" className="">
                 Password
               </label>
-              <div className="">
-                <a href="#" className="">
-                  Forgot password?
-                </a>
-              </div>
             </div>
             <div className="">
               <input
@@ -44,17 +39,10 @@ export default function Login() {
 
           <div>
             <button type="submit" className="">
-              Sign in
+              Register
             </button>
           </div>
         </Form>
-
-        <p className="">
-          Don&apos;t have an account?{" "}
-          <Link to={`/register`} className="">
-            Create one instead
-          </Link>
-        </p>
       </div>
     </div>
   );
