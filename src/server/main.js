@@ -4,9 +4,11 @@ import "dotenv/config.js";
 import session from "express-session";
 import passport from "passport";
 import LocalStrategy from "passport-local";
+import morgan from "morgan";
 
 const app = express();
 
+app.use(morgan("dev"));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
