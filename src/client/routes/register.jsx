@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
   return (
     <div className="">
       <div className="">
