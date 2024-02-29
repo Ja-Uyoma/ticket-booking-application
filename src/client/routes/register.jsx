@@ -45,6 +45,18 @@ export default function Register() {
           />
         </label>
 
+        <label htmlFor="passwordConfirmation" className="input input-bordered flex items-center gap-2">
+          Password Confirmation
+          <input
+            id="passwordConfirmation"
+            name="passwordConfirmation"
+            type="password"
+            autoComplete="current-password"
+            required
+            className="grow"
+          />
+        </label>
+
         <div>
           <button type="submit" className="btn btn-primary">
             Register
