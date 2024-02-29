@@ -3,53 +3,38 @@ import { Form, Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <div className="">
+    <div className="form-control">
       <div className="">
         <h2 className="">Sign in to your account</h2>
       </div>
 
       <div className="">
-        <Form className="" action="#" method="POST">
-          <div>
-            <label htmlFor="email" className="">
-              Email address
-            </label>
-            <div className="">
-              <input id="email" name="email" type="email" autoComplete="email" required className="" />
-            </div>
-          </div>
+        <Form className="form-control" action="#" method="POST">
+          <label htmlFor="email" className="input input-bordered flex items-center gap-2">
+            Email
+            <input name="email" type="text" className="grow" placeholder="user@example.com" required />
+          </label>
+
+          <label htmlFor="password" className="input input-bordered flex items-center gap-2">
+            Password
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="grow"
+            />
+          </label>
 
           <div>
-            <div className="">
-              <label htmlFor="password" className="">
-                Password
-              </label>
-              <div className="">
-                <a href="#" className="">
-                  Forgot password?
-                </a>
-              </div>
-            </div>
-            <div className="">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className=""
-              />
-            </div>
-          </div>
-
-          <div>
-            <button type="submit" className="">
+            <button type="submit" className="btn btn-primary">
               Sign in
             </button>
           </div>
         </Form>
 
-        <p className="">
+        <p>
           Don&apos;t have an account?{" "}
           <Link to={`/register`} className="">
             Create one instead
