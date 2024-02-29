@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root from "./routes/root";
 import ErrorPage from "./error-page";
-import Login from "./routes/login";
+import Login, { loginAction } from "./routes/login";
 import Register, { registerAction } from "./routes/register";
 
 const router = createBrowserRouter([
@@ -18,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+    action: loginAction,
   },
   {
     path: "register",

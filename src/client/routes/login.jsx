@@ -1,5 +1,29 @@
 import React from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
+
+export async function loginAction({ request }) {
+  const formData = await request.formData();
+  const payload = Object.fromEntries(formData);
+
+  console.log(payload);
+  try {
+    const res = await fetch("/api/v1/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    console.log(res);
+
+    if (res.status === 200) {
+      return redirect("/");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return { ok: true };
+}
 
 export default function Login() {
   return (
@@ -9,7 +33,7 @@ export default function Login() {
       </div>
 
       <div className="">
-        <Form className="form-control" action="#" method="POST">
+        <Form className="form-control" action="/login" method="POST">
           <label htmlFor="email" className="input input-bordered flex items-center gap-2">
             Email
             <input name="email" type="text" className="grow" placeholder="user@example.com" required />
