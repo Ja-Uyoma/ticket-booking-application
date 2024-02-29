@@ -2,22 +2,27 @@ import React from "react";
 import { Form, redirect } from "react-router-dom";
 
 export async function registerAction({ request }) {
-  const data = Object.fromEntries(await request.formData());
+  const formData = await request.formData();
+  const payload = Object.fromEntries(formData);
 
-  const res = await fetch("/api/v1/register", {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw res;
-      }
-    })
-    .catch((err) => console.error(err));
+  console.log(payload);
+  try {
+    const res = await fetch("/api/v1/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-  return redirect("/login");
+    console.log(res);
+
+    if (res.status === 200) {
+      return redirect("/login");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return { ok: true };
 }
 
 export default function Register() {
