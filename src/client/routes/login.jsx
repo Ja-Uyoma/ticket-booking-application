@@ -16,7 +16,7 @@ export async function loginAction({ request }) {
     console.log(res);
 
     if (res.status === 200) {
-      return redirect("/");
+      return redirect("/events");
     }
   } catch (err) {
     console.error(err);
