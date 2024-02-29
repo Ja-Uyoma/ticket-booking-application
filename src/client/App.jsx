@@ -37,10 +37,7 @@ function Header() {
               </a>
             </li>
             <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
+              <a>Login</a>
             </li>
           </ul>
         </div>
