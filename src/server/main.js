@@ -92,7 +92,7 @@ try {
   const email = "jimmiegivens17@gmail.com";
   const password = "admin";
 
-  const admin = User.findOne({ where: { email: email } });
+  const admin = await User.findOne({ where: { email: email } });
 
   if (!admin) {
     bcrypt.hash(password, 10, async (err, hashedPassword) => {
