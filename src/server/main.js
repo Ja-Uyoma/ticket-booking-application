@@ -86,7 +86,7 @@ const User = sequelize.define("User", {
   },
 });
 
-await User.sync();
+await User.sync({ force: true });
 
 try {
   const email = "jimmiegivens17@gmail.com";
