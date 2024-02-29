@@ -4,7 +4,6 @@ function App() {
   return (
     <>
       <Header />
-      <SearchBar />
       <Footer />
     </>
   );
@@ -45,24 +44,6 @@ function Header() {
           </ul>
         </div>
       </div>
-    </div>
-  );
-}
-
-function SearchBar() {
-  return (
-    <div className="flex justify-center bg-blue-600 py-4">
-      <input
-        type="search"
-        name="search"
-        id="search"
-        placeholder="Search..."
-        required
-        className="w-1/3 p-2 placeholder:p-4"
-      />
-      <button type="submit" className="bg-blue-600 text-white border-4 border-white px-3">
-        Search
-      </button>
     </div>
   );
 }
