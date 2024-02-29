@@ -22,47 +22,35 @@ export async function registerAction({ request }) {
 
 export default function Register() {
   return (
-    <div className="">
-      <div className="">
-        <h2 className="">Create an account</h2>
+    <div>
+      <div>
+        <h2>Create an account</h2>
       </div>
 
-      <div className="">
-        <Form className="" action="/register" method="POST">
-          <div>
-            <label htmlFor="email" className="">
-              Email address
-            </label>
-            <div className="">
-              <input id="email" name="email" type="email" autoComplete="email" required className="" />
-            </div>
-          </div>
+      <Form className="form-control" action="/register" method="POST">
+        <label htmlFor="email" className="input input-bordered flex items-center gap-2">
+          Email address
+          <input id="email" name="email" type="email" autoComplete="email" required className="grow" />
+        </label>
 
-          <div>
-            <div className="">
-              <label htmlFor="password" className="">
-                Password
-              </label>
-            </div>
-            <div className="">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className=""
-              />
-            </div>
-          </div>
+        <label htmlFor="password" className="input input-bordered flex items-center gap-2">
+          Password
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            required
+            className="grow"
+          />
+        </label>
 
-          <div>
-            <button type="submit" className="">
-              Register
-            </button>
-          </div>
-        </Form>
-      </div>
+        <div>
+          <button type="submit" className="btn btn-primary">
+            Register
+          </button>
+        </div>
+      </Form>
     </div>
   );
 }
