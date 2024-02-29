@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <Main />
       <Footer />
     </>
   );
@@ -49,23 +49,25 @@ function Header() {
   );
 }
 
-function Hero() {
+function Main() {
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello there</h1>
-          <p className="py-6">
-            Welcome to ticketpal, your gateway to hassle-free event experiences! Discover, book, and indulge in
-            unforgettable moments with just a few clicks. Whether you&apos;re craving front-row seats at concerts,
-            thrilling sports matches, or captivating theater performances, we&apos;ve got you covered. Dive into a world
-            of endless entertainment possibilities, where convenience meets excitement. Let&apos;s turn your dreams into
-            reality, one ticket at a time. Start your journey with TicketEase today!
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+    <main>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">Hello there</h1>
+            <p className="py-6">
+              Welcome to ticketpal, your gateway to hassle-free event experiences! Discover, book, and indulge in
+              unforgettable moments with just a few clicks. Whether you&apos;re craving front-row seats at concerts,
+              thrilling sports matches, or captivating theater performances, we&apos;ve got you covered. Dive into a
+              world of endless entertainment possibilities, where convenience meets excitement. Let&apos;s turn your
+              dreams into reality, one ticket at a time. Start your journey with TicketEase today!
+            </p>
+            <button className="btn btn-primary">Get Started</button>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
