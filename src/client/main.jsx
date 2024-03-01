@@ -10,7 +10,7 @@ import Login, { loginAction } from "./routes/login";
 import Register, { registerAction } from "./routes/register";
 import Events, { eventsLoader, logoutAction } from "./routes/events";
 import CreateEvent, { createEventAction } from "./routes/addEvent";
-import EditEvent from "./routes/EditEvent";
+import EditEvent, { loader as editEventLoader } from "./routes/EditEvent";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +42,7 @@ const router = createBrowserRouter([
   {
     path: "EditEvent/:eventID",
     element: <EditEvent />,
+    loader: editEventLoader,
   },
 ]);
 
