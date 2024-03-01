@@ -108,26 +108,6 @@ Event.belongsToMany(User, { through: Booking });
 
 await Booking.sync();
 
-try {
-  const email = "jimmiegivens17@gmail.com";
-  const password = "admin";
-
-  const admin = await User.findOne({ where: { email: email } });
-
-  if (!admin) {
-    bcrypt.hash(password, 10, async (err, hashedPassword) => {
-      if (err) {
-        console.error(err);
-      }
-
-      await User.create({ email: email, password: hashedPassword, role: "Admin" });
-      console.log("Admin user created successfully");
-    });
-  }
-} catch (err) {
-  console.error("Could not create an admin user", err);
-}
-
 passport.use(
   new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
     try {
