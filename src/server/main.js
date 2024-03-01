@@ -88,6 +88,20 @@ const User = sequelize.define("User", {
 
 await User.sync({ force: true });
 
+const Booking = sequelize.define("Booking", {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    allowNull: false,
+  },
+});
+
+User.belongsToMany(Event, { through: Booking });
+Event.belongsToMany(User, { through: Booking });
+
+await Booking.sync({ force: true });
+
 try {
   const email = "jimmiegivens17@gmail.com";
   const password = "admin";
@@ -350,6 +364,23 @@ app.delete("/api/v1/events/:eventID", authorizeUser, async (req, res) => {
     res.json({ message: "Event deleted successfully" });
   } catch (err) {
     res.status(400).json({ message: "Could not delete event" });
+  }
+});
+
+app.post("/api/v1/events/:eventID/book", authorizeUser, async (req, res) => {
+  try {
+    const event = await Event.findByPk(req.params.eventID);
+
+    if (!event) {
+      res.status(404).json({ message: "Event not found" });
+    }
+
+    // Associate the current user with the event by creating a booking
+    await req.user.addEvent(event);
+    res.status(200).json({ message: "Event booked successfully" });
+  } catch (err) {
+    console.error("Error booking event:", err);
+    res.status(500).json({ message: "An error occurred while booking the event" });
   }
 });
 
