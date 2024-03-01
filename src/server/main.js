@@ -95,6 +95,11 @@ const Booking = sequelize.define("Booking", {
     primaryKey: true,
     allowNull: false,
   },
+  bookingCount: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
 });
 
 User.belongsToMany(Event, { through: Booking });
@@ -375,8 +380,20 @@ app.post("/api/v1/events/:eventID/book", authorizeUser, async (req, res) => {
       res.status(404).json({ message: "Event not found" });
     }
 
-    // Associate the current user with the event by creating a booking
-    await req.user.addEvent(event);
+    const existingBookings = await Booking.findOne({ where: { UserId: req.user.id, EventId: event.id } });
+
+    // Check if the user already has 5 bookings
+    if (existingBookings && existingBookings.bookingCount >= 5) {
+      return res.status(400).json({ message: "You've reached the maximum number of bookings (5)" });
+    }
+
+    if (existingBookings) {
+      existingBookings.bookingCount += 1;
+      await existingBookings.save();
+    } else {
+      await Booking.create({ EventId: event.id, UserId: req.user.id });
+    }
+
     res.status(200).json({ message: "Event booked successfully" });
   } catch (err) {
     console.error("Error booking event:", err);
