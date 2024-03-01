@@ -29,7 +29,7 @@ export default function Login() {
   return (
     <div className="form-control flex items-center justify-center h-screen">
       <div>
-        <h2 className="">Sign in to your account</h2>
+        <h2 className="text-lg font-bold">Sign in to your account</h2>
       </div>
 
       <div className="">
