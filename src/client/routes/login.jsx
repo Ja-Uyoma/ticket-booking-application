@@ -1,57 +1,68 @@
 import React from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
+
+export async function loginAction({ request }) {
+  const formData = await request.formData();
+  const payload = Object.fromEntries(formData);
+
+  console.log(payload);
+  try {
+    const res = await fetch("/api/v1/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    console.log(res);
+
+    if (res.status === 200) {
+      return redirect("/events");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return { ok: true };
+}
 
 export default function Login() {
   return (
-    <div className="">
-      <div className="">
-        <h2 className="">Sign in to your account</h2>
+    <div className="form-control flex items-center justify-center h-screen">
+      <div>
+        <h2 className="text-lg font-bold">Sign in to your account</h2>
       </div>
 
       <div className="">
-        <Form className="" action="#" method="POST">
-          <div>
-            <label htmlFor="email" className="">
-              Email address
+        <Form className="form-control" action="/login" method="POST">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="email" className="input input-bordered flex items-center gap-2">
+              Email
+              {/* */}
+              <input name="email" type="text" className="grow" placeholder="user@example.com" required />
             </label>
-            <div className="">
-              <input id="email" name="email" type="email" autoComplete="email" required className="" />
-            </div>
-          </div>
 
-          <div>
-            <div className="">
-              <label htmlFor="password" className="">
-                Password
-              </label>
-              <div className="">
-                <a href="#" className="">
-                  Forgot password?
-                </a>
-              </div>
-            </div>
-            <div className="">
+            <label htmlFor="password" className="input input-bordered flex items-center gap-2">
+              Password
+              {/* */}
               <input
                 id="password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
                 required
-                className=""
+                className="grow"
               />
-            </div>
-          </div>
+            </label>
 
-          <div>
-            <button type="submit" className="">
+            <button type="submit" className="btn btn-primary">
               Sign in
             </button>
           </div>
         </Form>
 
-        <p className="">
+        <p>
           Don&apos;t have an account?{" "}
-          <Link to={`/register`} className="">
+          <Link to={`/register`} className="underline">
             Create one instead
           </Link>
         </p>
