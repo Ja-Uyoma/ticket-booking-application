@@ -36,11 +36,13 @@ export default function Login() {
         <Form className="form-control" action="/login" method="POST">
           <label htmlFor="email" className="input input-bordered flex items-center gap-2">
             Email
+            {/* */}
             <input name="email" type="text" className="grow" placeholder="user@example.com" required />
           </label>
 
           <label htmlFor="password" className="input input-bordered flex items-center gap-2">
             Password
+            {/* */}
             <input
               id="password"
               name="password"

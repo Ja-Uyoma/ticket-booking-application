@@ -35,11 +35,13 @@ export default function Register() {
       <Form className="form-control" action="/register" method="POST">
         <label htmlFor="email" className="input input-bordered flex items-center gap-2">
           Email address
+          {/* */}
           <input id="email" name="email" type="email" autoComplete="email" required className="grow" />
         </label>
 
         <label htmlFor="password" className="input input-bordered flex items-center gap-2">
           Password
+          {/* */}
           <input
             id="password"
             name="password"
@@ -52,6 +54,7 @@ export default function Register() {
 
         <label htmlFor="passwordConfirmation" className="input input-bordered flex items-center gap-2">
           Password Confirmation
+          {/* */}
           <input
             id="passwordConfirmation"
             name="passwordConfirmation"
