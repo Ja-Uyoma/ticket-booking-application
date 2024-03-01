@@ -38,7 +38,7 @@ export default function Events() {
       </div>
 
       {/**/}
-      <div>
+      <div className="grid grid-cols-3 gap-2">
         {events.length ? (
           events.map((event) => {
             return (
