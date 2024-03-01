@@ -59,7 +59,7 @@ const Event = sequelize.define("Event", {
   },
 });
 
-await Event.sync({ force: true });
+await Event.sync();
 
 const User = sequelize.define("User", {
   id: {
@@ -87,7 +87,7 @@ const User = sequelize.define("User", {
   },
 });
 
-await User.sync({ force: true });
+await User.sync();
 
 const Booking = sequelize.define("Booking", {
   id: {
@@ -106,7 +106,7 @@ const Booking = sequelize.define("Booking", {
 User.belongsToMany(Event, { through: Booking });
 Event.belongsToMany(User, { through: Booking });
 
-await Booking.sync({ force: true });
+await Booking.sync();
 
 try {
   const email = "jimmiegivens17@gmail.com";
