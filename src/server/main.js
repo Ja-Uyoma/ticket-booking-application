@@ -244,15 +244,6 @@ app.get("/api/v1/events", authorizeUser, async (req, res) => {
   }
 });
 
-app.get("/api/v1/events/:eventID", async (req, res) => {
-  try {
-    const event = await Event.findByPk(req.params.eventID);
-    res.json(event);
-  } catch (err) {
-    res.status(400).json({ message: "Could not retrieve event", error: err });
-  }
-});
-
 app.post(
   "/api/v1/events",
   authorizeUser,
@@ -285,6 +276,15 @@ app.post(
     }
   }
 );
+
+app.get("/api/v1/events/:eventID", async (req, res) => {
+  try {
+    const event = await Event.findByPk(req.params.eventID);
+    res.json(event);
+  } catch (err) {
+    res.status(400).json({ message: "Could not retrieve event", error: err });
+  }
+});
 
 app.put(
   "/api/v1/events/:eventID",
