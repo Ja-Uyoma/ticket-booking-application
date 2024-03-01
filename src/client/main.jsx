@@ -8,7 +8,7 @@ import Root from "./routes/root";
 import ErrorPage from "./error-page";
 import Login, { loginAction } from "./routes/login";
 import Register, { registerAction } from "./routes/register";
-import Events, { eventsLoader } from "./routes/events";
+import Events, { eventsLoader, logoutAction } from "./routes/events";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
     path: "events",
     element: <Events />,
     loader: eventsLoader,
+    action: logoutAction,
   },
 ]);
 

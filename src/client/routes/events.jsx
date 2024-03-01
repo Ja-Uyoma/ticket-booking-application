@@ -1,10 +1,31 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData } from "react-router-dom";
 
 export async function eventsLoader() {
   const res = await fetch("/api/v1/events");
   const events = await res.json();
   return events;
+}
+
+export async function logoutAction({ request }) {
+  const formData = await request.formData();
+  const payload = Object.fromEntries(formData);
+
+  try {
+    const res = await fetch("/api/v1/logout", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (res.status === 200) {
+      return redirect("/");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  return { ok: true };
 }
 
 export default function Events() {
@@ -33,7 +54,11 @@ export default function Events() {
           </a>
         </div>
         <div className="navbar-end">
-          <button className="btn">Logout</button>
+          <Form action="/" method="get">
+            <button type="submit" className="btn">
+              Logout
+            </button>
+          </Form>
         </div>
       </div>
 
