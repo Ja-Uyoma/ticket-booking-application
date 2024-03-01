@@ -27,8 +27,8 @@ export async function loginAction({ request }) {
 
 export default function Login() {
   return (
-    <div className="form-control">
-      <div className="">
+    <div className="form-control flex items-center">
+      <div>
         <h2 className="">Sign in to your account</h2>
       </div>
 
