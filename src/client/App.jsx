@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -33,14 +34,7 @@ function Header() {
           </div>
           <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
             <li>
-              <a href="." className="justify-between">
-                Profile
-                {/* */}
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a href={`login`}>Login</a>
+              <Link to={`login`}>Login</Link>
             </li>
           </ul>
         </div>
@@ -76,45 +70,23 @@ function Footer() {
     <footer className="footer p-10 bg-neutral text-neutral-content">
       <nav>
         <h6 className="footer-title">Services</h6>
-        <a href="." className="link link-hover">
-          Branding
-        </a>
-        <a href="." className="link link-hover">
-          Design
-        </a>
-        <a href="." className="link link-hover">
-          Marketing
-        </a>
-        <a href="." className="link link-hover">
-          Advertisement
-        </a>
+        <Link className="link link-hover">Branding</Link>
+        <Link className="link link-hover">Design</Link>
+        <Link className="link link-hover">Marketing</Link>
+        <Link className="link link-hover">Advertisement</Link>
       </nav>
       <nav>
         <h6 className="footer-title">Company</h6>
-        <a href="." className="link link-hover">
-          About us
-        </a>
-        <a href="." className="link link-hover">
-          Contact
-        </a>
-        <a href="." className="link link-hover">
-          Jobs
-        </a>
-        <a href="." className="link link-hover">
-          Press kit
-        </a>
+        <Link className="link link-hover">About us</Link>
+        <Link className="link link-hover">Contact</Link>
+        <Link className="link link-hover">Jobs</Link>
+        <Link className="link link-hover">Press kit</Link>
       </nav>
       <nav>
         <h6 className="footer-title">Legal</h6>
-        <a href="." className="link link-hover">
-          Terms of use
-        </a>
-        <a href="." className="link link-hover">
-          Privacy policy
-        </a>
-        <a href="." className="link link-hover">
-          Cookie policy
-        </a>
+        <Link className="link link-hover">Terms of use</Link>
+        <Link className="link link-hover">Privacy policy</Link>
+        <Link className="link link-hover">Cookie policy</Link>
       </nav>
     </footer>
   );
