@@ -27,45 +27,43 @@ export async function registerAction({ request }) {
 
 export default function Register() {
   return (
-    <div>
-      <div>
-        <h2>Create an account</h2>
-      </div>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h2 className="text-lg font-bold">Create an account</h2>
 
       <Form className="form-control" action="/register" method="POST">
-        <label htmlFor="email" className="input input-bordered flex items-center gap-2">
-          Email address
-          {/* */}
-          <input id="email" name="email" type="email" autoComplete="email" required className="grow" />
-        </label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="input input-bordered flex items-center gap-2">
+            Email address
+            {/* */}
+            <input id="email" name="email" type="email" autoComplete="email" required className="grow" />
+          </label>
 
-        <label htmlFor="password" className="input input-bordered flex items-center gap-2">
-          Password
-          {/* */}
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            className="grow"
-          />
-        </label>
+          <label htmlFor="password" className="input input-bordered flex items-center gap-2">
+            Password
+            {/* */}
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="grow"
+            />
+          </label>
 
-        <label htmlFor="passwordConfirmation" className="input input-bordered flex items-center gap-2">
-          Password Confirmation
-          {/* */}
-          <input
-            id="passwordConfirmation"
-            name="passwordConfirmation"
-            type="password"
-            autoComplete="current-password"
-            required
-            className="grow"
-          />
-        </label>
+          <label htmlFor="passwordConfirmation" className="input input-bordered flex items-center gap-2">
+            Password Confirmation
+            {/* */}
+            <input
+              id="passwordConfirmation"
+              name="passwordConfirmation"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="grow"
+            />
+          </label>
 
-        <div>
           <button type="submit" className="btn btn-primary">
             Register
           </button>
