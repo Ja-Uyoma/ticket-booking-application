@@ -235,7 +235,7 @@ app.get("/api/v1/logout", (req, res, next) => {
   });
 });
 
-app.get("/api/v1/events", async (req, res) => {
+app.get("/api/v1/events", authorizeUser, async (req, res) => {
   try {
     const events = await Event.findAll();
     res.json(events);
