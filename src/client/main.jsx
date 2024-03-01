@@ -9,7 +9,7 @@ import ErrorPage from "./error-page";
 import Login, { loginAction } from "./routes/login";
 import Register, { registerAction } from "./routes/register";
 import Events, { eventsLoader, logoutAction } from "./routes/events";
-import AddEvent, { addEventAction } from "./routes/addEvent";
+import CreateEvent, { createEventAction } from "./routes/addEvent";
 
 const router = createBrowserRouter([
   {
@@ -34,9 +34,9 @@ const router = createBrowserRouter([
     action: logoutAction,
   },
   {
-    path: "addEvent",
-    element: <AddEvent />,
-    action: addEventAction,
+    path: "createEvent",
+    element: <CreateEvent />,
+    action: createEventAction,
   },
 ]);
 

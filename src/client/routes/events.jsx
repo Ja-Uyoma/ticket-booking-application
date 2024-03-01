@@ -49,7 +49,7 @@ export default function Events() {
               </svg>
             </div>
           </div>
-          <Link to={"/addEvent"} className="btn btn-ghost text-xl">
+          <Link to={"/CreateEvent"} className="btn btn-ghost text-xl">
             Add Event
           </Link>
         </div>

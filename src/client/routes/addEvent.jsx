@@ -1,12 +1,39 @@
 import React from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 
-export default function AddEvent() {
+export async function createEventAction({ request }) {
+  const formData = await request.formData();
+  const payload = Object.fromEntries(formData);
+
+  console.log(payload);
+
+  try {
+    const res = await fetch("/api/v1/events", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    console.log(data.message);
+    console.log(data.err);
+
+    if (res.status === 200) {
+      return redirect("/events");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return { ok: true };
+}
+
+export default function CreateEvent() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h2 className="text-lg font-bold">Create an event</h2>
 
-      <Form className="form-control" action="/register" method="POST">
+      <Form className="form-control" action="/CreateEvent" method="POST">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="input input-bordered flex items-center gap-2">
             Name
@@ -26,7 +53,7 @@ export default function AddEvent() {
           <label htmlFor="date" className="input input-bordered flex items-center gap-2">
             Date
             {/* */}
-            <input id="date" name="date" type="date" required className="grow" />
+            <input id="date" name="date" type="datetime-local" required className="grow" />
           </label>
 
           <label htmlFor="venue" className="input input-bordered flex items-center gap-2">
@@ -38,17 +65,14 @@ export default function AddEvent() {
           <label htmlFor="maxAttendees" className="input input-bordered flex items-center gap-2">
             Max Attendees
             {/* */}
-            <input id="maxAttendees" name="max-attendees" type="number" required className="grow" />
+            <input id="maxAttendees" name="maxAttendees" type="number" required className="grow" />
           </label>
 
           <label htmlFor="ticketType" className="input input-bordered flex items-center gap-2">
             {/* */}
-            <select name="ticketType" className="w-full max-w-xs">
-              <option disabled selected>
-                Pick your ticket type
-              </option>
-              <option value="">Regular</option>
-              <option value="">VIP</option>
+            <select name="ticketType" className="w-full max-w-xs" defaultValue={"Pick your ticket type"}>
+              <option value="Regular">Regular</option>
+              <option value="VIP">VIP</option>
             </select>
           </label>
 
