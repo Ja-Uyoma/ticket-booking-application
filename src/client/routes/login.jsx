@@ -62,7 +62,7 @@ export default function Login() {
 
         <p>
           Don&apos;t have an account?{" "}
-          <Link to={`/register`} className="">
+          <Link to={`/register`} className="underline">
             Create one instead
           </Link>
         </p>
