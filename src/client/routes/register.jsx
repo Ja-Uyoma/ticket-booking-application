@@ -38,6 +38,15 @@ export default function Register() {
             <input id="email" name="email" type="email" autoComplete="email" required className="grow" />
           </label>
 
+          <label htmlFor="role" className="input input-bordered flex items-center gap-2">
+            Role
+            {/* */}
+            <select name="role" className="w-full max-w-xs">
+              <option value="Admin">Admin</option>
+              <option value="Regular">Regular</option>
+            </select>
+          </label>
+
           <label htmlFor="password" className="input input-bordered flex items-center gap-2">
             Password
             {/* */}
