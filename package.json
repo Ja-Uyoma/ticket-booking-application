@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server/main.js -w src/server",
-    "start": "NODE_ENV=production node src/server/main.js",
+    "start": "cross-env NODE_ENV=production node src/server/main.js",
     "build": "vite build"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.17",
+    "cross-env": "^7.0.3",
     "daisyui": "^4.7.2",
     "nodemon": "^3.0.1",
     "postcss": "^8.4.35",
