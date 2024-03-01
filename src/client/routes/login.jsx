@@ -54,11 +54,9 @@ export default function Login() {
               />
             </label>
 
-            <div>
-              <button type="submit" className="btn btn-primary">
-                Sign in
-              </button>
-            </div>
+            <button type="submit" className="btn btn-primary">
+              Sign in
+            </button>
           </div>
         </Form>
 
