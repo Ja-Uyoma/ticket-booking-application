@@ -7,7 +7,7 @@ export async function eventsLoader() {
   return events;
 }
 
-export async function logoutAction({ request }) {
+export async function action({ request }) {
   const formData = await request.formData();
   const payload = Object.fromEntries(formData);
 
@@ -77,9 +77,9 @@ export default function Events() {
                     <Link to={`/EditEvent/${event.id}`} className="btn btn-primary">
                       Edit Event
                     </Link>
-                    <Form action="" method="post" className="form-control">
-                      <button className="btn btn-primary">Book Event</button>
-                    </Form>
+                    <Link to={`/ViewEvent/${event.id}`} className="btn btn-primary">
+                      View Event
+                    </Link>
                   </div>
                 </div>
               </div>
