@@ -1,11 +1,39 @@
 import React from "react";
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useLoaderData, redirect } from "react-router-dom";
 
 export async function loader({ params }) {
   const eventID = params.eventID;
   const res = await fetch(`/api/v1/events/${eventID}`);
   const eventData = await res.json();
   return eventData;
+}
+
+export async function action({ params, request }) {
+  const eventID = params.eventID;
+  const formData = await request.formData();
+  const payload = Object.fromEntries(formData);
+
+  console.log(payload);
+
+  try {
+    const res = await fetch(`/api/v1/events/${eventID}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    console.log(data.message);
+    console.log(data.err);
+
+    if (res.status === 200) {
+      return redirect("/events");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return { ok: true };
 }
 
 export default function EditEvent() {
@@ -15,7 +43,7 @@ export default function EditEvent() {
     <div className="flex flex-col items-center justify-center h-screen">
       <h2 className="text-lg font-bold">Edit Event</h2>
 
-      <Form className="form-control" action="/CreateEvent" method="POST">
+      <Form className="form-control" action="" method="PATCH">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="input input-bordered flex items-center gap-2">
             Name
