@@ -286,7 +286,7 @@ app.get("/api/v1/events/:eventID", async (req, res) => {
   }
 });
 
-app.put(
+app.patch(
   "/api/v1/events/:eventID",
   authorizeUser,
   [
