@@ -8,9 +8,10 @@ import Root from "./routes/root";
 import ErrorPage from "./error-page";
 import Login, { loginAction } from "./routes/login";
 import Register, { registerAction } from "./routes/register";
-import Events, { eventsLoader, logoutAction } from "./routes/events";
+import Events, { eventsLoader, action as getEventsAction } from "./routes/events";
 import CreateEvent, { createEventAction } from "./routes/addEvent";
 import EditEvent, { action as editEventAction, loader as editEventLoader } from "./routes/EditEvent";
+import Event, { loader as eventDetailsLoader, action as bookEventAction } from "./routes/ViewEvent";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,13 @@ const router = createBrowserRouter([
     path: "events",
     element: <Events />,
     loader: eventsLoader,
-    action: logoutAction,
+    action: getEventsAction,
+  },
+  {
+    path: "ViewEvent/:eventID",
+    element: <Event />,
+    loader: eventDetailsLoader,
+    action: bookEventAction,
   },
   {
     path: "createEvent",

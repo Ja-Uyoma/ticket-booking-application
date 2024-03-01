@@ -8,6 +8,7 @@ import session from "express-session";
 import morgan from "morgan";
 import bcrypt from "bcryptjs";
 import { body, validationResult } from "express-validator";
+import nodemailer from "nodemailer";
 
 const sequelize = new Sequelize("ticketpal", process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
@@ -58,7 +59,7 @@ const Event = sequelize.define("Event", {
   },
 });
 
-await Event.sync({ force: true });
+await Event.sync();
 
 const User = sequelize.define("User", {
   id: {
@@ -86,7 +87,26 @@ const User = sequelize.define("User", {
   },
 });
 
-await User.sync({ force: true });
+await User.sync();
+
+const Booking = sequelize.define("Booking", {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    allowNull: false,
+  },
+  bookingCount: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
+});
+
+User.belongsToMany(Event, { through: Booking });
+Event.belongsToMany(User, { through: Booking });
+
+await Booking.sync();
 
 try {
   const email = "jimmiegivens17@gmail.com";
@@ -350,6 +370,56 @@ app.delete("/api/v1/events/:eventID", authorizeUser, async (req, res) => {
     res.json({ message: "Event deleted successfully" });
   } catch (err) {
     res.status(400).json({ message: "Could not delete event" });
+  }
+});
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.MAIL_SENDER,
+    pass: process.env.MAIL_SENDER_PASSWORD,
+  },
+});
+
+app.post("/api/v1/events/:eventID/book", authorizeUser, async (req, res) => {
+  try {
+    const event = await Event.findByPk(req.params.eventID);
+
+    if (!event) {
+      res.status(404).json({ message: "Event not found" });
+    }
+
+    const existingBookings = await Booking.findOne({ where: { UserId: req.user.id, EventId: event.id } });
+
+    // Check if the user already has 5 bookings
+    if (existingBookings && existingBookings.bookingCount >= 5) {
+      return res.status(400).json({ message: "You've reached the maximum number of bookings (5)" });
+    }
+
+    // If the event still has available slots, proceed with the booking
+    if (event.maxAttendees > 0) {
+      if (existingBookings) {
+        existingBookings.bookingCount += 1;
+        await existingBookings.save();
+      } else {
+        await Booking.create({ EventId: event.id, UserId: req.user.id });
+      }
+
+      event.maxAttendees -= 1;
+      await event.save();
+    }
+
+    await transporter.sendMail({
+      from: process.env.MAIL_SENDER,
+      to: req.user.email,
+      subject: "Booking Confirmation",
+      text: `Dear ${req.user.email},\n\nYou have successfully booked the event "${event.name}".\n\nThank you for your booking!\n\nBest regards,\nThe TicketPal Team`,
+    });
+
+    res.status(200).json({ message: "Event booked successfully" });
+  } catch (err) {
+    console.error("Error booking event:", err);
+    res.status(500).json({ message: "An error occurred while booking the event" });
   }
 });
 

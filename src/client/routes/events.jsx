@@ -7,7 +7,7 @@ export async function eventsLoader() {
   return events;
 }
 
-export async function logoutAction({ request }) {
+export async function action({ request }) {
   const formData = await request.formData();
   const payload = Object.fromEntries(formData);
 
@@ -71,15 +71,15 @@ export default function Events() {
                 <div className="card-body">
                   <h2 className="card-title">{event.name}</h2>
                   <p>{event.description}</p>
-                  <p>{event.venue}</p>
-                  <p>{new Date(event.date).toLocaleString()}</p>
+                  <p>Venue: {event.venue}</p>
+                  <p>Date: {new Date(event.date).toLocaleString()}</p>
                   <div className="card-actions justify-between">
                     <Link to={`/EditEvent/${event.id}`} className="btn btn-primary">
                       Edit Event
                     </Link>
-                    <Form action="" method="post" className="form-control">
-                      <button className="btn btn-primary">Book Event</button>
-                    </Form>
+                    <Link to={`/ViewEvent/${event.id}`} className="btn btn-primary">
+                      View Event
+                    </Link>
                   </div>
                 </div>
               </div>
