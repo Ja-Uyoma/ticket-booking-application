@@ -71,8 +71,8 @@ export default function Events() {
                 <div className="card-body">
                   <h2 className="card-title">{event.name}</h2>
                   <p>{event.description}</p>
-                  <p>{event.venue}</p>
-                  <p>{new Date(event.date).toLocaleString()}</p>
+                  <p>Venue: {event.venue}</p>
+                  <p>Date: {new Date(event.date).toLocaleString()}</p>
                   <div className="card-actions justify-between">
                     <Link to={`/EditEvent/${event.id}`} className="btn btn-primary">
                       Edit Event
