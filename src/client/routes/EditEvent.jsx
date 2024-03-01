@@ -11,26 +11,54 @@ export async function loader({ params }) {
 export async function action({ params, request }) {
   const eventID = params.eventID;
   const formData = await request.formData();
-  const payload = Object.fromEntries(formData);
+  let intent = formData.get("intent");
 
-  console.log(payload);
+  if (intent === "editEvent") {
+    const payload = Object.fromEntries(formData);
 
-  try {
-    const res = await fetch(`/api/v1/events/${eventID}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    console.log(payload);
 
-    const data = await res.json();
-    console.log(data.message);
-    console.log(data.err);
+    try {
+      const res = await fetch(`/api/v1/events/${eventID}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    if (res.status === 200) {
-      return redirect("/events");
+      const data = await res.json();
+      console.log(data.message);
+      console.log(data.err);
+
+      if (res.status === 200) {
+        return redirect("/events");
+      }
+    } catch (err) {
+      console.error(err);
     }
-  } catch (err) {
-    console.error(err);
+  }
+
+  if (intent === "deleteEvent") {
+    const payload = Object.fromEntries(formData);
+
+    console.log(payload);
+
+    try {
+      const res = await fetch(`/api/v1/events/${eventID}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      console.log(data.message);
+      console.log(data.err);
+
+      if (res.status === 200) {
+        return redirect("/events");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return { ok: true };
@@ -104,9 +132,14 @@ export default function EditEvent() {
             <input name="ticketPrice" type="number" required className="grow" />
           </label>
 
-          <button type="submit" className="btn btn-primary">
-            Edit Event
-          </button>
+          <div className="flex flex-row justify-between">
+            <button type="submit" name="intent" value="deleteEvent" className="btn btn-primary">
+              Delete Event
+            </button>
+            <button type="submit" name="intent" value="editEvent" className="btn btn-primary">
+              Edit Event
+            </button>
+          </div>
         </div>
       </Form>
     </div>
