@@ -8,6 +8,7 @@ import session from "express-session";
 import morgan from "morgan";
 import bcrypt from "bcryptjs";
 import { body, validationResult } from "express-validator";
+import nodemailer from "nodemailer";
 
 const sequelize = new Sequelize("ticketpal", process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
@@ -372,6 +373,14 @@ app.delete("/api/v1/events/:eventID", authorizeUser, async (req, res) => {
   }
 });
 
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.MAIL_SENDER,
+    pass: process.env.MAIL_SENDER_PASSWORD,
+  },
+});
+
 app.post("/api/v1/events/:eventID/book", authorizeUser, async (req, res) => {
   try {
     const event = await Event.findByPk(req.params.eventID);
@@ -399,6 +408,13 @@ app.post("/api/v1/events/:eventID/book", authorizeUser, async (req, res) => {
       event.maxAttendees -= 1;
       await event.save();
     }
+
+    await transporter.sendMail({
+      from: process.env.MAIL_SENDER,
+      to: req.user.email,
+      subject: "Booking Confirmation",
+      text: `Dear ${req.user.email},\n\nYou have successfully booked the event "${event.name}".\n\nThank you for your booking!\n\nBest regards,\nThe TicketPal Team`,
+    });
 
     res.status(200).json({ message: "Event booked successfully" });
   } catch (err) {
