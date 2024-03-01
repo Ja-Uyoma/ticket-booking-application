@@ -77,9 +77,9 @@ export default function Events() {
                     <Link to={`/EditEvent/${event.id}`} className="btn btn-primary">
                       Edit Event
                     </Link>
-                    <form action="/BookEvent" method="post" className="form-control">
+                    <Form action="" method="post" className="form-control">
                       <button className="btn btn-primary">Book Event</button>
-                    </form>
+                    </Form>
                   </div>
                 </div>
               </div>
