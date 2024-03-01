@@ -74,7 +74,7 @@ export default function Events() {
                   <p>{event.venue}</p>
                   <p>{new Date(event.date).toLocaleString()}</p>
                   <div className="card-actions justify-between">
-                    <Link to={"/EditEvent"} className="btn btn-primary">
+                    <Link to={`/EditEvent/${event.id}`} className="btn btn-primary">
                       Edit Event
                     </Link>
                     <form action="/BookEvent" method="post" className="form-control">
