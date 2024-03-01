@@ -14,7 +14,9 @@ function Header() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">ticketpal</a>
+        <a href="." className="btn btn-ghost text-xl">
+          ticketpal
+        </a>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
@@ -31,8 +33,9 @@ function Header() {
           </div>
           <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
             <li>
-              <a className="justify-between">
+              <a href="." className="justify-between">
                 Profile
+                {/* */}
                 <span className="badge">New</span>
               </a>
             </li>
@@ -73,23 +76,45 @@ function Footer() {
     <footer className="footer p-10 bg-neutral text-neutral-content">
       <nav>
         <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+        <a href="." className="link link-hover">
+          Branding
+        </a>
+        <a href="." className="link link-hover">
+          Design
+        </a>
+        <a href="." className="link link-hover">
+          Marketing
+        </a>
+        <a href="." className="link link-hover">
+          Advertisement
+        </a>
       </nav>
       <nav>
         <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <a href="." className="link link-hover">
+          About us
+        </a>
+        <a href="." className="link link-hover">
+          Contact
+        </a>
+        <a href="." className="link link-hover">
+          Jobs
+        </a>
+        <a href="." className="link link-hover">
+          Press kit
+        </a>
       </nav>
       <nav>
         <h6 className="footer-title">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <a href="." className="link link-hover">
+          Terms of use
+        </a>
+        <a href="." className="link link-hover">
+          Privacy policy
+        </a>
+        <a href="." className="link link-hover">
+          Cookie policy
+        </a>
       </nav>
     </footer>
   );
