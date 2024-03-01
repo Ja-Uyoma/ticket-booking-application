@@ -81,7 +81,7 @@ export default function Events() {
             );
           })
         ) : (
-          <p>No events</p>
+          <p className="text-lg">No events</p>
         )}
       </div>
     </div>
