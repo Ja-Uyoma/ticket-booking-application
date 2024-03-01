@@ -387,11 +387,17 @@ app.post("/api/v1/events/:eventID/book", authorizeUser, async (req, res) => {
       return res.status(400).json({ message: "You've reached the maximum number of bookings (5)" });
     }
 
-    if (existingBookings) {
-      existingBookings.bookingCount += 1;
-      await existingBookings.save();
-    } else {
-      await Booking.create({ EventId: event.id, UserId: req.user.id });
+    // If the event still has available slots, proceed with the booking
+    if (event.maxAttendees > 0) {
+      if (existingBookings) {
+        existingBookings.bookingCount += 1;
+        await existingBookings.save();
+      } else {
+        await Booking.create({ EventId: event.id, UserId: req.user.id });
+      }
+
+      event.maxAttendees -= 1;
+      await event.save();
     }
 
     res.status(200).json({ message: "Event booked successfully" });
