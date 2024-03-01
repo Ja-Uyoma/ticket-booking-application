@@ -122,14 +122,10 @@ export default function EditEvent() {
             </select>
           </label>
 
-          <label
-            htmlFor="ticketPrice"
-            className="input input-bordered flex items-center gap-2"
-            defaultValue={event.ticketPrice}
-          >
+          <label htmlFor="ticketPrice" className="input input-bordered flex items-center gap-2">
             Ticket Price
             {/* */}
-            <input name="ticketPrice" type="number" required className="grow" />
+            <input name="ticketPrice" type="number" required className="grow" defaultValue={event.ticketPrice} />
           </label>
 
           <div className="flex flex-row justify-between">
