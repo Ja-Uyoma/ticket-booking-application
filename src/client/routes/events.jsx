@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData, Link } from "react-router-dom";
 
 export async function eventsLoader() {
   const res = await fetch("/api/v1/events");
@@ -49,9 +49,9 @@ export default function Events() {
               </svg>
             </div>
           </div>
-          <a href="/addEvent" className="btn btn-ghost text-xl">
+          <Link to={"/addEvent"} className="btn btn-ghost text-xl">
             Add Event
-          </a>
+          </Link>
         </div>
         <div className="navbar-end">
           <Form action="/" method="get">
