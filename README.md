@@ -19,6 +19,7 @@ DB_PASSWORD="your_database_password"
 DB_HOST="your_database_host"
 MAIL_SENDER="your_email"
 MAIL_SENDER_PASSWORD="your_email_app_password"
+SESSION_SECRET="your_session_secret"
 ```
 
 For more information on the MAIL_SENDER_PASSWORD, see [Sending email using nodemailer](https://medium.com/@y.mehnati_49486/how-to-send-an-email-from-your-gmail-account-with-nodemailer-837bf09a7628)
